@@ -1,6 +1,6 @@
-# Traffic light contract
+# Lumina contract
 
-This is a traffic light contract implementation, where you can see the architecture, services, methods and queries of the contract.
+This is a credit request contract implementation, where you can see the architecture, services, methods and queries of the contract.
 
 ## Table of contents
 
