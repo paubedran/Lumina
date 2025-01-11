@@ -1,0 +1,39 @@
+type Events = enum {
+  FundsAdded,
+  BorrowersCalculated,
+  FundsDistributed,
+  Error: str,
+};
+
+type Borrower = struct {
+  requested_amount: u64,
+};
+
+type Lender = struct {
+  amount_available: u64,
+};
+
+type IoState = struct {
+  lenders: vec Lender,
+  gold_borrowers: vec Borrower,
+  silver_borrowers: vec Borrower,
+  bronze_borrowers: vec Borrower,
+  gold_avg: opt u64,
+  silver_avg: opt u64,
+  bronze_avg: opt u64,
+};
+
+constructor {
+  New : ();
+};
+
+service Service {
+  AddFunds : (amount: u64) -> Events;
+  CalculateBorrowers : () -> Events;
+  DistributeFunds : (amount: u64, category: str) -> Events;
+  query GetAvgAmount : (category: str) -> opt u64;
+  query GetBorrowersByCategory : (category: str) -> vec Borrower;
+  query GetLenders : () -> vec Lender;
+  query Query : () -> IoState;
+};
+
